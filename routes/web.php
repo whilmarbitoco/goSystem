@@ -18,7 +18,6 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified']);
 
 
-
 Route::get('/dashboard', function () {
 
 	$tenantprofile = \App\Models\Tenantprofile::all();

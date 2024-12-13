@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
                 'regex:/^(\+63|0)9\d{9}$/',
                 'required_if:user_type,rental_owner',
             ],
-
+           'status' => ['nullable', 'in:pending,approaved',],
         ]);
         
         $user = User::create([
@@ -56,7 +56,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'user_type' => $request->user_type,
-            'number' => $request->number,
+	    'number' => $request->number,
+            'status' => $request->number,
         ]);
 
         event(new Registered($user));
